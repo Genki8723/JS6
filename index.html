@@ -33,53 +33,53 @@
     </form>
     
     <script>
-       'use strict';
+    'use strict';
 
     const tbody = document.getElementById('tb');
     const todos = [];
 
     document.getElementById('addbtn').addEventListener('click',event);
 
-    function Todo() {
+    function todoshow() {
       for(let i = tbody.childNodes.length-1; i >= 0; i--) {
         tbody.removeChild(tbody.childNodes[i]);
       }
 
       const taskname = document.getElementById('taskname');
-      const tasknamevalue = taskname.value;
+      const taskNameValue = taskname.value;
       const todo = {
-        content: tasknamevalue,
-        state: "作業中"
+        content: taskNameValue,
+        state: '作業中'
       }
 
       taskname.value = "";
       todos.push(todo);
 
-      todocreate();
+      todoCreate();
     }
 
-    function todocreate() {
+    function todoCreate() {
       for(let i = 0; i < todos.length; i++) {
         const tr = document.createElement('tr');
-        const td1 = document.createElement('td');
-        const td2 = document.createElement('td');
-        const td3 = document.createElement('td');
-        const td4 = document.createElement('td');
-        const button = document.createElement('button');
-        const button2 = document.createElement('button');
+        const id = document.createElement('td');
+        const event = document.createElement('td');
+        const del = document.createElement('td');
+        const state = document.createElement('td');
+        const createbtn = document.createElement('button');
+        const delbtn = document.createElement('button');
 
         button1.innerHTML = todos[i].state;
         button2.innerHTML = "削除";
 
-        td1.innerHTML = i;
-        td2.innerHTML = todos[i].content;
-        td3.appendChild(button1);
-        td4.appendChild(button2);
+        id.innerHTML = i;
+        event.innerHTML = todos[i].content;
+        state.appendChild(createbtn);
+        del.appendChild(delbtn);
 
-        tr.appendChild(td1);
-        tr.appendChild(td2);
-        tr.appendChild(td3);
-        tr.appendChild(td4);
+        tr.appendChild(id);
+        tr.appendChild(event);
+        tr.appendChild(state);
+        tr.appendChild(del);
 
         tbody.appendChild(tr);
       }
